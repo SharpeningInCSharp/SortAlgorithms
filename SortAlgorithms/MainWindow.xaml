@@ -1,0 +1,76 @@
+﻿<Window x:Class="SortAlgorithms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SortAlgorithms"
+        mc:Ignorable="d"
+        Title="AVi" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="LightBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="DarkBlue" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <!--Main info grid-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="1.25*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Control panel -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Column="0">
+                    <StackPanel>
+                        <Button x:Name="AddMyOwnSequenceButton" Content="Set collection" Style="{StaticResource Button}"
+                                FontSize="12" Margin="4,10,4,4" Click="AddMyOwnSequenceButton_Click"/>
+                        <TextBox x:Name="CapacityTB" Text="Enter array size" Style="{StaticResource TextBox}" 
+                         GotFocus="CapacityTB_GotFocus" LostFocus="CapacityTB_LostFocus"/>
+                    </StackPanel>
+                    <ComboBox Name="SortTypesCB" VerticalAlignment="Center" SelectionChanged="SortTypesCB_SelectionChanged" Style="{StaticResource ComboBox}">
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Bubble</ComboBoxItem>
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Cocktail</ComboBoxItem>
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Insertion</ComboBoxItem>
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Shell</ComboBoxItem>
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Selection</ComboBoxItem>
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Gnome</ComboBoxItem>
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Tree</ComboBoxItem>
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Radix</ComboBoxItem>
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Merge</ComboBoxItem>
+                        <ComboBoxItem Tag="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}">Quick</ComboBoxItem>
+                    </ComboBox>
+                    <Button x:Name="Start" Content="Start sort" VerticalAlignment="Center"
+                            Click="Start_Click" Style="{StaticResource Button}" FontSize="24"/>
+                </StackPanel>
+
+                <!--Sort info panel -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock x:Name="TimeTB" Text="00:00.00" ToolTip="[min]:[sec].[msec]"  Style="{StaticResource TextBlock}"/>
+                    <TextBlock Text="Comparations:" Style="{StaticResource TextBlockInfo}"/>
+                    <TextBlock x:Name="ComparationsTB" Text="0" Style="{StaticResource TextBlock}"/>
+                    <TextBlock Text="Swops:" Style="{StaticResource TextBlockInfo}"/>
+                    <TextBlock Text="0" x:Name="SwopsTB" Style="{StaticResource TextBlock}"/>
+                </StackPanel>
+            </Grid>
+            <!-- Slider-->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="Resources/RunningMan.png" ToolTip="FASTER"/>
+                <Slider x:Name="SortSpeedSlider" ValueChanged="SortSpeedSlider_ValueChanged" Maximum="780" Minimum="20"
+                     Value="200" Width="400" ToolTip="Slide to change sorting speed"/>
+                <Image Source="Resources/WalkingMan.png" ToolTip="Slower"/>
+            </StackPanel>
+        </Grid>
+
+        <!--Sort items panel -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" x:Name="ItemsSP" 
+                    HorizontalAlignment="Center"/>
+
+    </Grid>
+</Window>

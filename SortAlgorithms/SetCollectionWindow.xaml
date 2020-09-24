@@ -1,0 +1,26 @@
+﻿<Window x:Class="SortAlgorithms.SetCollectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SortAlgorithms"
+        mc:Ignorable="d"
+        Title="SetCollectionWindow" Height="450" Width="800">
+    <Grid Background="DarkBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Enter numbers" Style="{StaticResource TextBlock}" HorizontalAlignment="Left"/>
+            <Button x:Name="confirmButton" Style="{StaticResource Button}" 
+                    Content="Confirm" FontSize="24" HorizontalAlignment="Right"
+                    Margin="4,4,80,4"
+                    Click="ConfirmButton_Click"/>
+        </Grid>
+
+        <TextBox Grid.Row="1" x:Name="sequenceTextBox" Style="{StaticResource TextBox}"
+                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                 Foreground="Black" AcceptsReturn="True"/>
+    </Grid>
+</Window>
